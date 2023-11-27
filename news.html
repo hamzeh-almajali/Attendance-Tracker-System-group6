@@ -3,19 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>News</title>
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css"/>
 
+    <link rel="stylesheet" href="css/todo.css">
 
-    <link rel="stylesheet" href="css/T.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/Sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 </head>
 <body>
+    <nav>
+        <ul>
+          <li><a href="#" class="logo">
+              <img src="Media/logo-no-background.png" alt="profile photo">
+              <span class="nav-item">Trainer</span>
+            </a></li>
+            <li><a class="link_side" href="news.html">
+                <i class="fa-solid fa-house fas"></i>
+                <span class="nav-item">Home</span>
+              </a></li>
+          <li><a class="link_side" href="trainees.html">
+              <i class="fa-solid fa-people-group fas"></i>
+              <span class="nav-item">Trainees</span>
+            </a></li>
+
+          <!-- <li><a class="link_side" href="todo.html">
+              <i class="fa-solid fa-comment fas"></i>
+              <span class="nav-item">Note</span>
+            </a></li> -->
+          <li><a class="link_side" href="profile.html">
+              <i class="fa-solid fa-user fas"></i>
+              <span class="nav-item">Profile</span>
+            </a></li>
+  
+  
+          <li><a class="link_side"  class="logout" onclick="()=>
+            localStorage.clear();
+            window.location.replace('loginPage.html');
+          ">
+          
+              <i class="fas fa-sign-out-alt fas"></i>
+              <span class="nav-item">Log out</span>
+            </a></li>
+        </ul>
+      </nav>
     <section class="main-content">
+      
         <div class="main">
             <h2>News</h2>
-            <hr>
+            
         </div>
     <div class="slide-container swiper">
         <div class="slide-content">
@@ -24,7 +64,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/unnamed.jpg" class="card-img" id="img1">
+                            <img src="media/unnamed.jpg" class="card-img" id="img1">
                         </div>
                     </div>
 
@@ -41,7 +81,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/data.png" class="card-img" id="img2">
+                            <img src="media/data.png" class="card-img" id="img2">
                         </div>
                     </div>
 
@@ -58,7 +98,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/3.PNG" class="card-img" id="img3">
+                            <img src="media/3.PNG" class="card-img" id="img3">
                         </div>
                     </div>
 
@@ -76,7 +116,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/3.PNG" class="card-img" id="img4">
+                            <img src="media/3.PNG" class="card-img" id="img4">
                         </div>
                     </div>
 
@@ -92,7 +132,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/3.PNG" class="card-img" id="img5">
+                            <img src="media/3.PNG" class="card-img" id="img5">
                         </div>
                     </div>
 
@@ -109,7 +149,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/3.PNG" class="card-img" id="img6">
+                            <img src="media/3.PNG" class="card-img" id="img6">
                         </div>
                     </div>
 
@@ -125,7 +165,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/4.PNG" class="card-img" id="img7">
+                            <img src="media/4.PNG" class="card-img" id="img7">
                         </div>
                     </div>
 
@@ -144,7 +184,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/Picture7.jpg" class="card-img" id="img8">
+                            <img src="media/Picture7.jpg" class="card-img" id="img8">
                         </div>
                     </div>
 
@@ -162,7 +202,7 @@
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
-                            <img src="images/unnamed.jpg" class="card-img" id="img9">
+                            <img src="media/unnamed.jpg" class="card-img" id="img9">
                         </div>
                     </div>
 
@@ -181,6 +221,51 @@
         <div class="swiper-pagination"></div>
     </div>
 </section>
+<div class="container">
+    <div class="note">
+    
+    <input type="text" name="note" id="value" placeholder="add your note">
+    <button onclick="fun()" >Add note</button>
+    </div>
+    <div class="content">
+       <table>
+        <tbody id="tbody">
+       
+       
+        </tbody>
+       </table>
+       <button onclick="clearta()" id="cbtn">clear</button>
+    </div>
+</div>
+<Script>
+let arr=[];
+let tbody=document.getElementById('tbody');
+
+function fun(){
+let inp=document.getElementById('value');
+let text = `
+<tr>
+            <td>${inp.value}</td>
+            
+            <td><button onclick='deleteRow(this)'>Delete</button></td>
+        </tr>
+`;
+
+tbody.innerHTML+= text;
+inp.value="";
+let btn =document.getElementById('cbtn');
+btn.style.display="block"
+}
+function clearta(){
+    tbody.innerHTML= "";
+}
+console.log(arr);
+function deleteRow(button) {
+            
+            let row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+</Script>
 </body>
 
 <!-- Swiper JS -->
@@ -188,5 +273,5 @@
 <script src="js/swiper-bundle.min.js"></script>
 
 
-<script src="js/T.js"></script>
+<script src="js/news.js"></script>
 </html>

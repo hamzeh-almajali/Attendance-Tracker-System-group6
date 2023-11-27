@@ -35,22 +35,22 @@ var swiper = new Swiper(".slide-content", {
 
         ,
         768: {
-          slidesPerView: 2, // Adjust the number of slides per view on smaller screens
+          slidesPerView: 1, // Adjust the number of slides per view on smaller screens
           spaceBetween: 30, // Adjust the space between slides on smaller screens
         }
         ,
         520:{
-          slidesPerView:2,
+          slidesPerView:1,
         }
 
         ,
         1024: {
-          slidesPerView: 3, // Adjust the number of slides per view on larger screens
+          slidesPerView: 1, // Adjust the number of slides per view on larger screens
           spaceBetween: 40, // Adjust the space between slides on larger screens
       },
         
         950:{
-          slidesPerView:3,
+          slidesPerView:1,
         }
     }
   })});
